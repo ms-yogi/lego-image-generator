@@ -4,7 +4,7 @@ import { trackEvent } from "@/utils/analytics";
 const Home = () => {
   return (
     <div
-      className="h-screen bg-no-repeat relative"
+      className="h-screen relative"
       style={{
         background: 'url("/images/logo-bg.webp")',
         backgroundPosition: "center",
@@ -16,7 +16,7 @@ const Home = () => {
 
       <a
         href="https://peerlist.io/yogini/project/legopix"
-        className="flex items-end absolute z-100 bottom-1 left-1"
+        className="flex items-end absolute z-100 md:bottom-1 bottom-12 left-1"
         onClick={() =>
           trackEvent("footer_spotlight", {
             event_category: "User Interaction",
@@ -32,7 +32,7 @@ const Home = () => {
         />
       </a>
 
-      <div className="absolute bottom-1 left-[29%] text-gray-500 text-xs">
+      <div className="absolute bottom-1 md:left-[29%] text-gray-500 text-xs text-center">
         Disclaimer: This project is powered by love for the Lego and is not
         affiliated with or endorsed by Lego in any way!
       </div>

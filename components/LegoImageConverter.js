@@ -1,8 +1,9 @@
-import { CancelCircleIcon, DownloadCircle01Icon } from "hugeicons-react";
+import { CancelCircleIcon } from "hugeicons-react";
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import UpvoteModal from "./UpvoteModal";
 import { trackEvent } from "@/utils/analytics";
+import { BnWSlider, BrickCountSlider, DownloadBtn } from "./LegoUI";
 
 const LegoImageConverter = () => {
   const [originalImage, setOriginalImage] = useState(null);
@@ -171,23 +172,8 @@ const LegoImageConverter = () => {
 
   return (
     <div className="w-full h-full flex">
-      <div className="w-[300px] h-screen flex flex-col justify-between backdrop-blur-sm ">
+      <div className="w-[300px] h-screen hidden md:flex flex-col justify-between backdrop-blur-sm ">
         <div className="p-4">
-          {/* Buttons */}
-          <div className="flex justify-center mb-4">
-            {!originalImage ? (
-              <label className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                <span>Choose an Image</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                />
-              </label>
-            ) : null}
-          </div>
-
           {originalImage ? (
             <div className="mb-4 md:mb-0">
               <div className="flex justify-between items-center mb-2 text-white">
@@ -204,49 +190,17 @@ const LegoImageConverter = () => {
               <img src={originalImage} alt="Original" className="" />
 
               <div className="mt-10">
-                <label
-                  htmlFor="blockSize"
-                  className="block text-sm font-medium text-white"
-                >
-                  Brick Density: {legoBlockSize}
-                </label>
-                <input
-                  type="range"
-                  id="blockSize"
-                  name="blockSize"
-                  min="5"
-                  max="50"
-                  value={legoBlockSize}
-                  onChange={(e) => setLegoBlockSize(Number(e.target.value))}
-                  className="mt-1 block w-full"
+                <BrickCountSlider
+                  legoBlockSize={legoBlockSize}
+                  setLegoBlockSize={setLegoBlockSize}
                 />
               </div>
 
               <div className="mt-10">
-                <label
-                  htmlFor="bwLevel"
-                  className="block text-sm font-medium text-white"
-                >
-                  Black & White Level: {bwLevel}%
-                </label>
-                <input
-                  type="range"
-                  id="bwLevel"
-                  name="bwLevel"
-                  min="0"
-                  max="100"
-                  value={bwLevel}
-                  onChange={(e) => setBwLevel(Number(e.target.value))}
-                  className="mt-1 block w-full"
-                />
+                <BnWSlider bwLevel={bwLevel} setBwLevel={setBwLevel} />
               </div>
 
-              <button
-                onClick={handleDownload}
-                className="text-white flex justify-center items-center gap-1 mt-10 cursor-pointer bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded"
-              >
-                <DownloadCircle01Icon /> Download
-              </button>
+              <DownloadBtn handleDownload={handleDownload} />
             </div>
           ) : null}
         </div>
@@ -257,8 +211,19 @@ const LegoImageConverter = () => {
           <div>
             <Logo />
 
-            <div className="flex justify-center items-center w-full h-[calc(100vh-112px)]">
+            <div className="flex flex-col justify-center items-center w-full h-[calc(100vh-112px)]">
               <img src={legoImage} alt="Lego" className=" max-h-[80vh]" />
+
+              <div className="flex flex-col md:hidden">
+                <div className="flex mt-10 gap-6">
+                  <BrickCountSlider
+                    legoBlockSize={legoBlockSize}
+                    setLegoBlockSize={setLegoBlockSize}
+                  />
+                  <BnWSlider bwLevel={bwLevel} setBwLevel={setBwLevel} />
+                </div>
+                <DownloadBtn handleDownload={handleDownload} />
+              </div>
             </div>
           </div>
         ) : null}

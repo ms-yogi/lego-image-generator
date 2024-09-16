@@ -16,6 +16,22 @@ export default function Document() {
         <meta property="og:image" content="/images/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
+
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_TAG}`}
+        />
+        <Script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.GOOGLE_ANALYTICS_TAG}');
+          `,
+          }}
+        />
       </Head>
       <body className="antialiased">
         <Main />

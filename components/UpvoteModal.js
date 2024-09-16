@@ -1,3 +1,4 @@
+import { trackEvent } from "@/utils/analytics";
 import { CancelCircleIcon } from "hugeicons-react";
 import React, { useState, useEffect } from "react";
 
@@ -9,6 +10,11 @@ const UpvoteModal = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const handleUpvote = () => {
+    trackEvent("modal_spotlight", {
+      event_category: "User Interaction",
+      event_label: "Checked spotlight from Modal",
+      value: 1,
+    });
     window.open("https://peerlist.io/yogini/project/legopix", "_blank");
     onClose();
   };

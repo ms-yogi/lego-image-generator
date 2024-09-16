@@ -1,4 +1,5 @@
 import LegoImageConverter from "@/components/LegoImageConverter";
+import { trackEvent } from "@/utils/analytics";
 
 const Home = () => {
   return (
@@ -16,6 +17,13 @@ const Home = () => {
       <a
         href="https://peerlist.io/yogini/project/legopix"
         className="flex items-end absolute z-100 bottom-1 left-1"
+        onClick={() =>
+          trackEvent("footer_spotlight", {
+            event_category: "User Interaction",
+            event_label: "Footer Spotlight Button",
+            value: 1,
+          })
+        }
       >
         <img src="/images/lego-favicon.png" className="h-28 inline" />
         <img

@@ -2,6 +2,7 @@ import { CancelCircleIcon, DownloadCircle01Icon } from "hugeicons-react";
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import UpvoteModal from "./UpvoteModal";
+import { trackEvent } from "@/utils/analytics";
 
 const LegoImageConverter = () => {
   const [originalImage, setOriginalImage] = useState(null);
@@ -19,6 +20,11 @@ const LegoImageConverter = () => {
       setOriginalImage(event.target.result);
     };
     reader.readAsDataURL(file);
+    trackEvent("image_upload", {
+      event_category: "User Interaction",
+      event_label: "Image Upload to try",
+      value: 1,
+    });
   };
 
   const convertToLego = (img, blockSize, bwLevel) => {
@@ -118,6 +124,11 @@ const LegoImageConverter = () => {
       link.href = legoImage;
       link.download = "legofied_image.png";
       link.click();
+      trackEvent("image_download", {
+        event_category: "User Interaction",
+        event_label: "Downloaded lego image",
+        value: 1,
+      });
       setShowModal(true);
     }
   };
@@ -255,7 +266,17 @@ const LegoImageConverter = () => {
         <canvas ref={canvasRef} style={{ display: "none" }} />
       </div>
 
-      <UpvoteModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <UpvoteModal
+        isOpen={showModal}
+        onClose={() => {
+          trackEvent("closed_modal", {
+            event_category: "User Interaction",
+            event_label: "Closed modal",
+            value: 1,
+          });
+          setShowModal(false);
+        }}
+      />
     </div>
   );
 };

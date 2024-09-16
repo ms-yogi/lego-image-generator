@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 export default function Document() {
   return (
@@ -12,24 +11,23 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="icon" href="/images/lego-head.png" />
-
         <meta name="twitter:image" content="/images/og-image.png" />
         <meta property="og:image" content="/images/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
-
-        <Script
+        <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_TAG}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
-        <Script
-          id="google-analytics"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.GOOGLE_ANALYTICS_TAG}');
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
           `,
           }}
         />

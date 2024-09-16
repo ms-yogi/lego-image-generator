@@ -115,6 +115,35 @@ const LegoImageConverter = ({ setIsImageSet }) => {
       }
     }
 
+    // Configure the watermark
+    ctx.font = "bold 16px Arial";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.lineWidth = 2;
+    ctx.textBaseline = "bottom";
+    ctx.textAlign = "right";
+
+    // Add the watermark text
+    const padding = 10;
+    const text = "Made with - legopix.vercel.app";
+    const textWidth = ctx.measureText(text).width;
+
+    ctx.strokeText(text, canvas.width - padding, canvas.height - padding);
+    ctx.fillText(text, canvas.width - padding, canvas.height - padding);
+
+    // Add a semi-transparent rectangle behind the text for better visibility
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(
+      canvas.width - textWidth - padding * 2,
+      canvas.height - 25 - padding,
+      textWidth + padding * 2,
+      25 + padding
+    );
+
+    // Re-add the text on top of the rectangle
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.fillText(text, canvas.width - padding, canvas.height - padding);
+
     // Save Lego image
     setLegoImage(canvas.toDataURL());
     setIsImageSet(true);

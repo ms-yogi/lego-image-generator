@@ -5,7 +5,7 @@ import UpvoteModal from "./UpvoteModal";
 import { trackEvent } from "@/utils/analytics";
 import { BnWSlider, BrickCountSlider, DownloadBtn } from "./LegoUI";
 
-const LegoImageConverter = () => {
+const LegoImageConverter = ({ setIsImageSet }) => {
   const [originalImage, setOriginalImage] = useState(null);
   const [legoImage, setLegoImage] = useState(null);
   const [legoBlockSize, setLegoBlockSize] = useState(20);
@@ -117,6 +117,7 @@ const LegoImageConverter = () => {
 
     // Save Lego image
     setLegoImage(canvas.toDataURL());
+    setIsImageSet(true);
   };
 
   const handleDownload = () => {
@@ -211,7 +212,7 @@ const LegoImageConverter = () => {
           <div>
             <Logo />
 
-            <div className="flex flex-col justify-center items-center w-full h-[calc(100vh-112px)]">
+            <div className="flex flex-col justify-center items-center w-full md:h-[calc(100vh-112px)] h-full mt-4 md:mt-0">
               <img src={legoImage} alt="Lego" className=" max-h-[80vh]" />
 
               <div className="flex flex-col md:hidden">

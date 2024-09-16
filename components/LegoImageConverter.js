@@ -36,7 +36,7 @@ const LegoImageConverter = () => {
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
 
-    // Legofy the image
+    // LegoPix the image
     const studSize = blockSize * 0.4; // Size of the stud
     const borderSize = 1; // Size of the border
     for (let y = 0; y < canvas.height; y += blockSize) {
@@ -136,12 +136,12 @@ const LegoImageConverter = () => {
         <div className="p-10 flex flex-col justify-center items-center grow-0 max-w-lg mx-auto rounded-lg bg-gray-950">
           <Logo />
 
-          <p className="text-center mb-10 text-white">
-            Legofy is a fun project that lets you transform your favorite images
-            into Lego-style artwork! Whether it's a selfie, a landscape, or your
-            pet, Legofy turns any image into Lego bricks (colorful or black and
-            white, it's upto you to decide). It's a creative way to share your
-            love for both art and Lego with the world!
+          <p className="text-center mt-6 mb-10 text-white">
+            LegoPix is a fun project that lets you transform your favorite
+            images into Lego-style artwork! Whether it's a selfie, a landscape,
+            or your pet, LegoPix turns any image into Lego bricks (colorful or
+            black and white, it's upto you to decide). It's a creative way to
+            share your love for both art and Lego with the world!
           </p>
 
           <label className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded self-center">
@@ -246,7 +246,7 @@ const LegoImageConverter = () => {
           <div>
             <Logo />
 
-            <div className="flex justify-center items-center w-full h-[calc(100vh-60px)]">
+            <div className="flex justify-center items-center w-full h-[calc(100vh-112px)]">
               <img src={legoImage} alt="Lego" className=" max-h-[80vh]" />
             </div>
           </div>

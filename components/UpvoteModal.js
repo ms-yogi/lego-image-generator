@@ -20,7 +20,7 @@ const UpvoteModal = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 text-slate-950">
       <div className="bg-white rounded-lg p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">Upvote Legofy on Peerlist</h2>
+          <h2 className="text-2xl font-bold">Upvote LegoPix on Peerlist</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -29,8 +29,8 @@ const UpvoteModal = ({ isOpen, onClose }) => {
           </button>
         </div>
         <p className="mb-2">
-          If you love Legos and found Legofy enjoyable, please consider upvoting
-          my project on Peerlist Project Spotlight.
+          If you love Legos and found LegoPix enjoyable, please consider
+          upvoting my project on Peerlist Project Spotlight.
         </p>
 
         <p className="mb-6">Your support means a lot to side projects!</p>

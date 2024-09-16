@@ -11,6 +11,11 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="icon" href="/images/lego-head.png" />
+
+        <meta name="twitter:image" content="/images/og-image.png" />
+        <meta property="og:image" content="/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="628" />
       </Head>
       <body className="antialiased">
         <Main />

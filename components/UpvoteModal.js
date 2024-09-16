@@ -9,8 +9,7 @@ const UpvoteModal = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const handleUpvote = () => {
-    // Replace this URL with your actual Peerlist Project Spotlight URL
-    window.open("https://peerlist.io/projects", "_blank");
+    window.open("https://peerlist.io/yogini/project/legopix", "_blank");
     onClose();
   };
 

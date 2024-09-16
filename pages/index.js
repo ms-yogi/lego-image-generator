@@ -3,21 +3,22 @@ import LegoImageConverter from "@/components/LegoImageConverter";
 const Home = () => {
   return (
     <div
-      className="p-9 h-screen bg-no-repeat"
+      className="h-screen bg-no-repeat relative"
       style={{
-        background: 'url("/images/green-logo-bg.png")',
+        background: 'url("/images/logo-bg.png")',
         backgroundPosition: "center",
         backgroundSize: "contain",
-        // backgroundRepeat: "no-repeat",
       }}
     >
-      <title>Legofy</title>
-      <div className="h-full w-full  p-8">
-        <h1 className="text-white text-center text-4xl font-bold">Legofy</h1>
+      <title>Legofy | Turn your images into Lego artwork</title>
+      <LegoImageConverter />
 
-        <div className="flex justify-center">
-          <LegoImageConverter />
-        </div>
+      <div className="flex items-end absolute z-100 bottom-1 left-1">
+        <img src="/images/lego-favicon.png" className="h-28 inline" />
+        <img
+          src="/images/launched-on-spotlight.svg"
+          className="inline bg-black p-2 h-auto mb-10 -ml-1 rounded-md"
+        />
       </div>
     </div>
   );
